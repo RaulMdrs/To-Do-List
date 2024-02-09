@@ -8,7 +8,7 @@ if (taskList) {
   storage.createAppStorage();
   getTaskList();
 }
-
+ 
 // Obter lista de tarefas
 const getTaskList = () => {
   taskListElement.innerHTML = ""; // Resetar conteúdo da div de listagem
