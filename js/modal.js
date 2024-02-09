@@ -6,11 +6,11 @@ const toggleModal = (id) => {
   // Limpar inputs e textareas dos modais conforme encontrados
   try {
     const inputsList = modalElement.querySelectorAll("input, textarea");
-    inputsList.forEach(input => {
+    inputsList.forEach((input) => {
       input.value = "";
-    }); 
+    });
   } catch (error) {
-    console.error("Inputs não encontrados! ", error)
+    console.error("Inputs não encontrados! ", error);
   }
 };
 
@@ -24,11 +24,13 @@ const changeViewModalContent = (data) => {
       "#view_task_modal_status"
     );
 
-    let taskDescription = data["description"] ? data["description"] : "Nenhuma descrição encontrada!";
+    let taskDescription = data["description"]
+      ? data["description"]
+      : "Nenhuma descrição encontrada!";
 
     let taskStatus;
     if (!data["done"]) {
-        taskStatus = `
+      taskStatus = `
         <div
                     class="flex items-center justify-center space-x-2 text-gray-50 bg-orange-600 py-2.5 px-3 rounded-xl w-fit">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -58,7 +60,7 @@ const changeViewModalContent = (data) => {
     modalDescriptionElement.textContent = taskDescription;
     modalStatusElement.innerHTML = taskStatus;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 };
 
@@ -82,4 +84,20 @@ const closeViewTaskModalElement = document.querySelector(
 );
 closeViewTaskModalElement.addEventListener("click", function () {
   toggleModal("#view_task_modal");
+});
+
+//Registrar clique do modal de confirmação de exclusão da tarefa
+const closeDeleteTaskModalElement = document.querySelector(
+  "#close_delete_task_modal"
+);
+closeDeleteTaskModalElement.addEventListener("click", function () {
+  toggleModal("#confirm_delete_task_modal");
+});
+
+const confirmDeleteTaskModalElement = document.querySelector(
+  "#confirm_delete_task_modal_btn"
+);
+confirmDeleteTaskModalElement.addEventListener("click", function () {
+  toggleModal("#confirm_delete_task_modal");
+  tasks.deleteTask(this.getAttribute("data-id"));
 });

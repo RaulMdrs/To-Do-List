@@ -52,7 +52,16 @@ const getTaskList = () => {
     deleteButtonElements.forEach(function (deleteButtonElement) {
       deleteButtonElement.addEventListener("click", function (event) {
         event.stopPropagation();
-        tasks.deleteTask(this.getAttribute("data-id"));
+        //tasks.deleteTask(this.getAttribute("data-id"));
+        toggleModal("#confirm_delete_task_modal");
+        const confirmModelElement = document.querySelector(
+          "#confirm_delete_task_modal_btn"
+        );
+        //console.log(this.getAttribute("data-id"));
+        confirmModelElement.setAttribute(
+          "data-id",
+          this.getAttribute("data-id")
+        );
       });
     });
 
@@ -91,62 +100,6 @@ const getTaskList = () => {
 
     countTasksElement.textContent = "0";
   }
-};
-
-// Manipulando as tasks
-const tasks = {
-  // Contar tarefas
-  countTasks: () => {
-    return Object.keys(taskList).length;
-  },
-  
-  // Criar tarefa
-  createTask: (data) => {
-    try {
-      console.table(data);
-
-      let nextIndex = Object.keys(taskList).length;
-      taskList[nextIndex] = data;
-      storage.updateAppStorage(taskList);
-      getTaskList();
-      console.log("Task criada com sucesso! ", data["name"]);
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  // Deletar tarefa
-  deleteTask: (id) => {
-    try {
-      delete taskList[id];
-      storage.updateAppStorage(taskList);
-      getTaskList();
-      console.log("Task deletada com sucesso! ", id);
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  // Concluir tarefa
-  doneTask: (id) => {
-    try {
-      let taskStatus = taskList[id].done;
-      taskStatus = !taskStatus;
-      taskList[id].done = taskStatus;
-      storage.updateAppStorage(taskList);
-      getTaskList();
-      console.log("Task concluida com sucesso!", id);
-    } catch (error) {
-      console.error(error);
-    }
-  },
-
-  // Visualizar tarefa
-  viewTask: (id) => {
-    console.log(id);
-    changeViewModalContent(taskList[id])
-    toggleModal("#view_task_modal");
-  },
 };
 
 if (taskList) {
