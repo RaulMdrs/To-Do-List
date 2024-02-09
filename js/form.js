@@ -5,7 +5,7 @@ submitCreateTaskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const formData = new FormData(this);
-
+ 
     const createTaskData = {
         "name": formData.get("name"),
         "description": formData.get("description"),

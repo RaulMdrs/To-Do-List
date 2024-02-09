@@ -6,7 +6,7 @@ storage = {
         } catch (error) {
             console.error(error)
             return false
-        }
+        } 
     },
 
     createAppStorage: () => {
