@@ -1,19 +1,12 @@
 const taskListElement = document.querySelector(".task-list");
 
 let taskList = storage.getAppStorage();
-if (taskList) {
-  console.log("storage encontrado", taskList);
-} else {
-  console.log("storage não encontrado");
-  storage.createAppStorage();
-  getTaskList();
-}
- 
+
 // Obter lista de tarefas
 const getTaskList = () => {
   taskListElement.innerHTML = ""; // Resetar conteúdo da div de listagem
-
-  if (tasks.countTasks() > 0) {
+  const countTasksElement = document.querySelector("#tasks_count");
+  if (taskList !== null && tasks.countTasks() > 0) {
     for (task in taskList) {
       let currentTask = taskList[task];
 
@@ -84,6 +77,8 @@ const getTaskList = () => {
         tasks.viewTask(this.getAttribute("data-id"));
       });
     });
+
+    countTasksElement.textContent = tasks.countTasks();
   } else {
     let notFoundTasksContent = `
         <div class="flex flex-col justify-center items-center h-full">
@@ -93,11 +88,9 @@ const getTaskList = () => {
         </div>
         `;
     taskListElement.innerHTML = notFoundTasksContent;
-  }
 
-  // Atualizar contador de tasks do cabeçalho
-  const countTasksElement = document.querySelector("#tasks_count");
-  countTasksElement.textContent = tasks.countTasks();
+    countTasksElement.textContent = "0";
+  }
 };
 
 // Manipulando as tasks
@@ -156,6 +149,13 @@ const tasks = {
   },
 };
 
+if (taskList) {
+  console.log("storage encontrado", taskList);
+} else {
+  console.log("storage não encontrado");
+  storage.createAppStorage();
+  getTaskList();
+}
 // REMOVER - EXEMPLOS
 /*tasks.createTask(
     {
