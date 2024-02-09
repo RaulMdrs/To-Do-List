@@ -8,7 +8,7 @@ const toggleModal = (id) => {
     const inputsList = modalElement.querySelectorAll("input, textarea");
     inputsList.forEach(input => {
       input.value = "";
-    });
+    }); 
   } catch (error) {
     console.error("Inputs não encontrados! ", error)
   }
