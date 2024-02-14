@@ -7,17 +7,29 @@ const storage = {
             return JSON.parse(localStorage.getItem('tarefas'))
         } catch (error) {
             console.error(error)
+            localStorage.setItem('tarefas', "{}");
+            alert("Erro ao obter as tarefas! Não se preocupe, estamos a postos para resolver");
             return {}
         }
     },
 
     // Criar armazenamento em local storage com JSON vazio
     createAppStorage: () => {
-        localStorage.setItem('tarefas', "{}");
+        try {
+            localStorage.setItem('tarefas', "{}");
+        } catch(error) {
+            console.error(error)
+            alert("Erro ao definir a memória para guardar suas tarefas! Não se preocupe, estamos a postos para resolver");
+        }
     },
 
     // Registrar novo objeto convertido para JSON no local storage (Objeto recebido como parâmetro)
     updateAppStorage: (data) => {
-        localStorage.setItem('tarefas', JSON.stringify(data));
+        try {
+            localStorage.setItem('tarefas', JSON.stringify(data));
+        } catch(error) {
+            console.error(error)
+            alert("Erro ao atualizar os dados das tarefas! Não se preocupe, estamos a postos para resolver");
+        }
     }
 }

@@ -69,9 +69,6 @@ const getTaskList = (priority) => {
             </div>`;
 
         taskListElement.innerHTML += taskContent;
-
-      } else {
-
       }
     }
 
@@ -132,26 +129,3 @@ taskListOrderElement.addEventListener("change", function(event) {
 });
 
 window.onload = getTaskList("all");
-
-// REMOVER - GERAR EXEMPLOS DE TAREFAS
-/*tasks.createTask(
-    {
-        "name": "Completar relatório mensal",
-        "description": "Criar relatório mensal contendo análise de desempenho, métricas-chave e recomendações para o próximo mês.",
-        "done": false
-    }
-)
-tasks.createTask(
-    {
-        "name": "Agendar reunião de equipe",
-        "description": "Agendar reunião de equipe para discutir os objetivos do trimestre, atribuir tarefas e alinhar estratégias.",
-        "done": false
-    }
-)
-tasks.createTask(
-    {
-        "name": "Revisar propostas de projeto",
-        "description": "Revisar e dar feedback sobre as propostas de projeto recebidas, priorizando aquelas alinhadas com os objetivos da empresa.",
-        "done": false
-    }
-)*/

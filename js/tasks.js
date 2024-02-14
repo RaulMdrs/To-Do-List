@@ -3,18 +3,22 @@ const tasks = {
   
   // Contar tarefas registradas com base na prioridade
   countTasks: (data, priority) => {
-    const itensCounted = [];
+    try {
+      const itensCounted = [];
 
-    for (item in data) {
-      let currentItem = data[item];
-      let itemPriority = currentItem["priority"];
-
-      if (priority == itemPriority || priority == "all") {
-        itensCounted.push(item)
+      for (item in data) {
+        let currentItem = data[item];
+        let itemPriority = currentItem["priority"];
+  
+        if (priority == itemPriority || priority == "all") {
+          itensCounted.push(item)
+        }
       }
+      return itensCounted.length;
+    }catch(error){
+      console.error(error);
+      alert("Erro ao obter número de tarefas. Estamos trabalhando para resolver... ");
     }
-
-    return itensCounted.length;
   },
 
   // Criar tarefa
@@ -28,6 +32,7 @@ const tasks = {
       console.table(data);
     } catch (error) {
       console.error(error);
+      alert("Erro ao criar a tarefa! Não se preocupe, estamos a postos para resolver!");
     }
   },
 
@@ -40,6 +45,7 @@ const tasks = {
       console.log("Task deletada com sucesso! ", id);
     } catch (error) {
       console.error(error);
+      alert("Erro ao deletar a tarefa! Não se preocupe, estamos a postos para resolver");
     }
   },
 
@@ -54,13 +60,18 @@ const tasks = {
       console.log("Task concluida com sucesso!", id);
     } catch (error) {
       console.error(error);
+      alert("Erro ao sair da tarefa! Não se preocupe, estamos a postos para resolver");
     }
   },
 
   // Visualizar tarefa
   viewTask: (id) => {
-    console.log(id);
-    changeViewModalContent(taskList[id]);
-    toggleModal("#view_task_modal");
+    try {
+      console.log(id);
+      changeViewModalContent(taskList[id]);
+      toggleModal("#view_task_modal");
+    } catch(error){
+      alert("Erro ao visualizar a tarefa! Não se preocupe, estamos a postos para resolver");
+    }
   },
 };
