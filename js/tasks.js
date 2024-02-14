@@ -1,6 +1,7 @@
-// Manipulando as tasks
+// Manipulando as tarefas
 const tasks = {
-  // Contar tarefas
+  
+  // Contar tarefas registradas
   countTasks: () => {
     return Object.keys(taskList).length;
   },

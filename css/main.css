@@ -1,8 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
+/* Fontes */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+.primary-font {
+    font-family: "Montserrat", sans-serif;
+}
+
+.secondary-font {
+    font-family: "Roboto", sans-serif;
+}
+
+/* Seleção de texto */
 * {
-    font-family: 'Lexend', sans-serif;
-
     -webkit-touch-callout: none;
     /* iOS Safari */
     -webkit-user-select: none;
@@ -14,9 +22,9 @@
     -ms-user-select: none;
     /* Internet Explorer/Edge */
     user-select: none;
-    /* Não padrão */
 }
 
+/* Scroll suavizado */
 html {
     scroll-behavior: smooth;
 }
