@@ -2,7 +2,7 @@
 
 [![Tecnologias utilizadas](https://skillicons.dev/icons?i=js,html,css,tailwind&theme=light)](https://skillicons.dev)
 
-Este é um aplicativo simples de To-Do List (Lista de Tarefas) desenvolvido em com as tecnologias listadas nos ícones acima (HTML, CSS, Tailwind CSS e JavaScript). Ele permite que os usuários criem, visualizem, filtrem e removam tarefas de sua lista de afazeres.
+Este é um aplicativo simples de To-Do List (Lista de Tarefas) desenvolvido com as tecnologias listadas nos ícones acima (HTML, CSS, Tailwind CSS e JavaScript). Ele permite que os usuários criem, visualizem, filtrem e removam tarefas de sua lista de afazeres.
 
 ## Funcionalidades
 
