@@ -101,40 +101,37 @@ const changeViewModalContent = (data) => {
   }
 };
 
-// Registrar clique do modal de criação de tarefa
-const openCreateTaskModalElement = document.querySelector(
-  "#open_create_task_modal"
-);
-openCreateTaskModalElement.addEventListener("click", function () {
-  toggleModal("#create_task_modal");
-});
-const closeCreateTaskModalElement = document.querySelector(
-  "#close_create_task_modal"
-);
-closeCreateTaskModalElement.addEventListener("click", function () {
-  toggleModal("#create_task_modal");
-});
+const modals = { 
+  openCreateTaskModalElement : {
+    modal : "#create_task_modal", 
+    button : "#open_create_task_modal"
+  }, 
+  closeCreateTaskModalElement : {
+    modal : "#create_task_modal",
+    button : "#close_create_task_modal"
+  },
+  closeViewTaskModalElement : {
+    modal : "#view_task_modal",
+    button : "#close_view_task_modal"
+  },
+  closeDeleteTaskModalElement : {
+    modal : "#confirm_delete_task_modal",
+    button : "#close_delete_task_modal"
+  },
+  confirmDeleteTaskModalElement : {
+    modal : "#confirm_delete_task_modal",
+    button : "#confirm_delete_task_modal_btn"
+  }
+};
 
-// Registrar clique do modal de visualização da tarefa
-const closeViewTaskModalElement = document.querySelector(
-  "#close_view_task_modal"
-);
-closeViewTaskModalElement.addEventListener("click", function () {
-  toggleModal("#view_task_modal");
-});
+for (let modal in modals) {
+  const modalElement = document.querySelector(modals[modal]["button"])
+    modalElement.addEventListener("click", function () {
+    toggleModal(modals[modal]["modal"]);
 
-//Registrar clique do modal de confirmação de exclusão da tarefa
-const closeDeleteTaskModalElement = document.querySelector(
-  "#close_delete_task_modal"
-);
-closeDeleteTaskModalElement.addEventListener("click", function () {
-  toggleModal("#confirm_delete_task_modal");
-});
-
-const confirmDeleteTaskModalElement = document.querySelector(
-  "#confirm_delete_task_modal_btn"
-);
-confirmDeleteTaskModalElement.addEventListener("click", function () {
-  toggleModal("#confirm_delete_task_modal");
-  tasks.deleteTask(this.getAttribute("data-id"));
-});
+    // Se o modal for de deletar task, passamos também a function deleteTaks
+    if (modals[modal]["button"] == "#confirm_delete_task_modal_btn") {
+      tasks.deleteTask(this.getAttribute("data-id"));
+    }
+  });
+}
