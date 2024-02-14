@@ -9,6 +9,7 @@ submitCreateTaskForm.addEventListener("submit", function (event) {
     const createTaskData = {
         "name": formData.get("name"),
         "description": formData.get("description"),
+        "priority": parseInt(formData.get("priority")),
         "done": false
     };
 
